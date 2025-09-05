@@ -1,6 +1,6 @@
 
 
-class MeModule
+export class MeModule
 {
     constructor( largeur, hauteur, profondeur )
     {
