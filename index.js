@@ -64,3 +64,46 @@ c.affiche = function()
 // Appel de la méthode affiche pour l'objet c
 
 c.affiche() ;
+
+// Création d'un tableau 
+
+let t = [ 1, 4, "toto", 4.5 ] ;
+
+// Ajout d'une nouvelle case
+t[4] = "titi" ;
+
+
+for( let i=0; i<t.length ; i++ )
+{
+    console.log( t[i] ) ;
+}
+
+// Creation d'un dictionnaire en JS
+d = [] ;
+
+d["largeur"] = 300 ;
+d["hauteur"] = 200 ;
+
+console.log( "largeur: " + d["largeur"] + " hauteur: " + d["hauteur"] ) ;
+
+// Modification des valeurs du dictionnaire
+
+d["largeur"] += 50 ;
+
+d.hauteur += 50 ;
+
+console.log( "largeur: " + d["largeur"] + " hauteur: " + d["hauteur"] ) ;
+
+c["hauteur"] += 50 ;
+c.affiche() ;
+
+d["affiche"] = c.affiche ; // equivalent à d.affiche = c.affiche ;
+d.affiche() ;
+
+// Parcour du dictionnaire pour afficher ses valeurs
+for( let x in a)
+{
+    console.log( x + " : " + a[x] ) ;
+} 
+
+
