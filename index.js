@@ -1,6 +1,6 @@
 import { MeModule } from "./src/meuble/MeModule";
 
-let m1 = new MeModule( 200, 100, 80 ) ;
+let m1 = new MeModule( 100, 5, 200 ) ;
 
 console.log( m1 ) ;
 
