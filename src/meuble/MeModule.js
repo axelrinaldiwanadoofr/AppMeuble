@@ -4,26 +4,26 @@ export class MeModule
 {
     constructor( largeur=30, hauteur=10, profondeur=30 )
     {
-        if( largeur < 30 )
-            this._largeur = 30 ;
-        else if( largeur > 120 )
-            this._largeur = 120 ;
+        if( largeur < MeModule.largeurMin )
+            this._largeur = MeModule.largeurMin ;
+        else if( largeur > MeModule.largeurMax )
+            this._largeur = MeModule.largeurMax ;
         else
             this._largeur = largeur ;
 
-        if( hauteur < 10 )
-            this.hauteur = 10 ;
-        else if( hauteur > 300 )
-            this.hauteur = 300 ;
+        if( hauteur < MeModule.hauteurMin )
+            this._hauteur = MeModule.hauteurMin ;
+        else if( hauteur > MeModule.hauteurMax )
+            this._hauteur = MeModule.hauteurMax ;
         else
-            this.hauteur = hauteur ;
+            this._hauteur = hauteur ;
 
-        if( profondeur < 30 )
-            this.profondeur = 30 ;
-        else if( profondeur > 120 )
-            this.profondeur = 120 ;
+        if( profondeur < MeModule.profondeurMin )
+            this._profondeur = MeModule.profondeurMin ;
+        else if( profondeur > MeModule.profondeurMax )
+            this._profondeur = MeModule.profondeurMax ;
         else
-            this.profondeur = profondeur ;
+            this._profondeur = profondeur ;
     }
 
     // getter pour la propriété largeur
@@ -34,11 +34,52 @@ export class MeModule
 
     set largeur( valeur )
     {
-        if( valeur < 30 )
-            this._largeur = 30 ;
-        else if( valeur > 120 )
-            this._largeur = 120 ;
+        if( valeur < MeModule.largeurMin )
+            this._largeur = MeModule.largeurMin ;
+        else if( valeur > MeModule.largeurMax )
+            this._largeur = MeModule.largeurMax ;
         else
             this._largeur = valeur ;
     }
+
+    get hauteur()
+    {
+        return this._hauteur ;
+    }
+
+    set hauteur( valeur )
+    {
+        if( valeur < MeModule.hauteurMin )
+            this._hauteur = MeModule.hauteurMin ;
+        else if( valeur > MeModule.hauteurMax )
+            this._hauteur = MeModule.hauteurMax ;
+        else
+            this._hauteur = valeur ;
+    }
+
+    get profondeur()
+    {
+        return this._profondeur ;
+    }
+
+    set profondeur( valeur )
+    {
+        if( valeur < MeModule.profondeurMin )
+            this._profondeur = MeModule.profondeurMin ;
+        else if( valeur > MeModule.profondeurMax )
+            this._profondeur = MeModule.profondeurMax ;
+        else
+            this._profondeur = valeur ;
+
+    }
+
+    // Creation d'attributs de classe pour stocker les limites
+    static largeurMin = 30 ;
+    static largeurMax = 120 ;
+    static hauteurMin = 10 ;
+    static hauteurMax = 300 ;
+    static profondeurMin = 30 ;
+    static profondeurMax = 120 ;
+
+
 }
