@@ -5,11 +5,11 @@ export class MeModule
     constructor( largeur=30, hauteur=10, profondeur=30 )
     {
         if( largeur < 30 )
-            this.largeur = 30 ;
+            this._largeur = 30 ;
         else if( largeur > 120 )
-            this.largeur = 120 ;
+            this._largeur = 120 ;
         else
-            this.largeur = largeur ;
+            this._largeur = largeur ;
 
         if( hauteur < 10 )
             this.hauteur = 10 ;
@@ -25,4 +25,17 @@ export class MeModule
         else
             this.profondeur = profondeur ;
     }
+
+    // Getter sur l'attribut _largeur
+    get largeur()
+    {
+        return this._largeur ;
+    }
+
+    set largeur( valeur )
+    {
+        this._largeur = valeur ;
+    }
+
+
 }
