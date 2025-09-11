@@ -4,26 +4,22 @@ export class MeModule
 {
     constructor( largeur=30, hauteur=10, profondeur=30 )
     {
-        if( largeur < MeModule.largeurMin )
-            this._largeur = MeModule.largeurMin ;
-        else if( largeur > MeModule.largeurMax )
-            this._largeur = MeModule.largeurMax ;
-        else
-            this._largeur = largeur ;
+        // On cree et initialise les attributs
+        this._largeur = MeModule.largeurMin ;
+        this._hauteur = MeModule.hauteurMin ;
+        this._profondeur = MeModule.profondeurMin ;
 
-        if( hauteur < MeModule.hauteurMin )
-            this._hauteur = MeModule.hauteurMin ;
-        else if( hauteur > MeModule.hauteurMax )
-            this._hauteur = MeModule.hauteurMax ;
-        else
-            this._hauteur = hauteur ;
-
-        if( profondeur < MeModule.profondeurMin )
-            this._profondeur = MeModule.profondeurMin ;
-        else if( profondeur > MeModule.profondeurMax )
-            this._profondeur = MeModule.profondeurMax ;
-        else
-            this._profondeur = profondeur ;
+        // On met à jour des attributs
+        try
+        {
+            this.largeur = largeur ;
+            this.hauteur = hauteur ;
+            this.profondeur = profondeur ;
+        }
+        catch( erreur )
+        {
+            console.error( erreur ) ;
+        }
     }
 
     // getter pour la propriété largeur
@@ -35,9 +31,9 @@ export class MeModule
     set largeur( valeur )
     {
         if( valeur < MeModule.largeurMin )
-            this._largeur = MeModule.largeurMin ;
+            throw "La largeur doit etre supperieure ou egale à " + MeModule.largeurMin ;
         else if( valeur > MeModule.largeurMax )
-            this._largeur = MeModule.largeurMax ;
+            throw "La largeur doit etre inferieur ou egale à " + MeModule.largeurMax ;            
         else
             this._largeur = valeur ;
     }
@@ -50,9 +46,9 @@ export class MeModule
     set hauteur( valeur )
     {
         if( valeur < MeModule.hauteurMin )
-            this._hauteur = MeModule.hauteurMin ;
+            throw "La hauteur doit etre supperieure ou egale à " + MeModule.hauteurMin ;
         else if( valeur > MeModule.hauteurMax )
-            this._hauteur = MeModule.hauteurMax ;
+            throw "La hauteur doit etre inférieure ou egale à " + MeModule.hauteurMax ;
         else
             this._hauteur = valeur ;
     }
@@ -65,9 +61,9 @@ export class MeModule
     set profondeur( valeur )
     {
         if( valeur < MeModule.profondeurMin )
-            this._profondeur = MeModule.profondeurMin ;
+            throw "La profondeur doit etre supperieure ou egale à " + MeModule.profondeurMin ;
         else if( valeur > MeModule.profondeurMax )
-            this._profondeur = MeModule.profondeurMax ;
+            throw "La profondeur doit etre inférieure ou egale à " + MeModule.profondeurMax ;
         else
             this._profondeur = valeur ;
 
