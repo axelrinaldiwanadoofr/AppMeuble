@@ -7,6 +7,31 @@ export class FormMeModule
     constructor( idForm )
     {
         this.idForm = idForm ;
+
+        // Ajout des listeners sur les boutons OK et CANCEL et
+        // gére l'appel des méthodes onOk et onCancel
+        let div = document.getElementById( this.idForm ) ;
+        if( div )
+        {
+            let btnOk = document.getElementById( "btnOk") ;
+            if( btnOk )
+            {
+                btnOk.addEventListener( "click", ()=>
+                {
+                    this.onOk() ;
+                }) ;
+            }
+
+            let btnCancel = document.getElementById( "btnCancel") ;
+            if( btnCancel )
+            {
+                btnCancel.addEventListener( "click", ()=>
+                {
+                    this.onCancel() ;
+                }) ;
+            }
+        }
+
     }
 
     updateForm( me )
@@ -26,5 +51,15 @@ export class FormMeModule
             let inputProfondeur = div.getElementsByClassName( "profondeur" )[0] ;
             if( inputProfondeur ) inputProfondeur.value = me.profondeur ;
         }
+    }
+
+    onOk()
+    {
+        alert( "Ok") ;
+    }
+
+    onCancel()
+    {
+        alert( "Cancel") ;
     }
 }
