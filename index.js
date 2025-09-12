@@ -29,6 +29,10 @@ let form1 = new FormMeModule( "FormMeModule1" ) ;
 
 form1.updateForm( m2 ) ;
 
+m2.largeur = 40 ;
+
+console.log( m2 ) ;
+
 
 
 
