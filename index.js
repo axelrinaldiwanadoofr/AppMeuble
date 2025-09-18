@@ -26,8 +26,10 @@ catch( messageErreur )
 console.log( m2 ) ;
 
 let form1 = new FormMeModule( "FormMeModule1" ) ;
-
 form1.updateForm( m2 ) ;
+
+let form2 = new FormMeModule( "FormMeModule2" ) ;
+form2.updateForm( m2 ) ;
 
 m2.largeur = 40 ;
 
