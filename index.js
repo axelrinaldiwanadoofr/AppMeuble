@@ -31,6 +31,7 @@ form1.updateForm( m2 ) ;
 let form2 = new FormMeModule( "FormMeModule2" ) ;
 form2.updateForm( m2 ) ;
 
+m2.couleur = "#FF0000" ;
 m2.largeur = 40 ;
 
 console.log( m2 ) ;
