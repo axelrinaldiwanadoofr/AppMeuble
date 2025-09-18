@@ -111,13 +111,18 @@ export class FormMeModuleWC extends HTMLElement
 
     async createElements()
     {
+        // Cree un DOM à part pour le component
         let root = this.attachShadow({mode: 'open'}) ;
+
+        // Charge le code HTML du formulaire
         let html = await this.loadHtml( "src/ihm/FormMeModuleHtml.html" ) ;
 
+        // Crée les éléments du formulaire
         let content = document.createElement( "div" ) ;
         content.innerHTML = html ;
         root.appendChild( content ) ;
 
+        // Associe le controleur identifié par la propriété controler
         let controlerId = this.getAttribute( "controler" ) ;
         if( controlerId != undefined )
         {
