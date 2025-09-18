@@ -2,12 +2,13 @@
 
 export class MeModule
 {
-    constructor( largeur=30, hauteur=10, profondeur=30 )
+    constructor( largeur=30, hauteur=10, profondeur=30, couleur="#C0C0C0" )
     {
         // On cree et initialise les attributs
         this._largeur = MeModule.largeurMin ;
         this._hauteur = MeModule.hauteurMin ;
         this._profondeur = MeModule.profondeurMin ;
+        this.couleur = couleur ;
 
         // On met à jour des attributs
         try

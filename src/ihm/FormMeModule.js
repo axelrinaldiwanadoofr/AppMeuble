@@ -53,6 +53,10 @@ export class FormMeModule
             // Recupère la référence de l'input profondeur et met à jour sa valeur
             let inputProfondeur = div.getElementsByClassName( "profondeur" )[0] ;
             if( inputProfondeur ) inputProfondeur.value = this.modele.profondeur ;
+
+            // Recupère la référence de l'input couleur et met à jour sa valeur
+            let inputCouleur = div.getElementsByClassName( "couleur" )[0] ;
+            if( inputCouleur ) inputCouleur.value = this.modele.couleur ;
         }
     }
 
@@ -74,12 +78,17 @@ export class FormMeModule
             // Recupère la référence de l'input profondeur et met à jour sa valeur
             let inputProfondeur = div.getElementsByClassName( "profondeur" )[0] ;
             if( inputProfondeur ) this.modele.profondeur = parseInt(inputProfondeur.value) ;
+
+            // Recupère la référence de l'input couleur et met à jour sa valeur
+            let inputCouleur = div.getElementsByClassName( "couleur" )[0] ;
+            if( inputCouleur ) this.modele.couleur = inputCouleur.value ;
         }
     }
 
     onOk()
     {
         this.updateModele() ;
+        console.log( this.modele ) ;
     }
 
     onCancel()
