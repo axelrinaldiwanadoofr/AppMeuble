@@ -1,6 +1,7 @@
-import { MeModule } from "./src/meuble/MeModule";
-import { FormMeModule } from "./src/ihm/FormMeModule";
+import { MeModule } from "./src/meuble/MeModule.js";
+import { FormMeModule } from "./src/ihm/FormMeModule.js";
 
+/*
 let m1 = new MeModule( 100, 5, 200 ) ;
 
 console.log( m1 ) ;
@@ -21,19 +22,27 @@ catch( messageErreur )
 }
 
 
-//alert( m2.largeur ) ;
+alert( m2.largeur ) ;
 
 console.log( m2 ) ;
+*/
 
-let form1 = new FormMeModule( "FormMeModule1" ) ;
-form1.updateForm( m2 ) ;
+let _MEModule = new MeModule() ;
+let formMEModule1 = new FormMeModule( "FormMeModele1", _MEModule ) ;
 
-let form2 = new FormMeModule( "FormMeModule2" ) ;
-form2.updateForm( m2 ) ;
+formMEModule1.updateThisForm(_MEModule);
 
-m2.largeur = 40 ;
+let formMEModule2 = new FormMeModule( "FormMeModele2", _MEModule ) ;
 
-console.log( m2 ) ;
+formMEModule2.updateThisForm(_MEModule);
+
+_MEModule.largeur = 100 ;
+_MEModule.hauteur = 150 ;
+_MEModule.profondeur = 60 ;
+
+console.log( _MEModule ) ;
+
+
 
 
 

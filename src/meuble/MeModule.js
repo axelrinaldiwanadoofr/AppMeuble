@@ -1,3 +1,4 @@
+import { FormMeModule } from "../ihm/FormMeModule.js"
 
 
 export class MeModule
@@ -22,6 +23,7 @@ export class MeModule
         }
     }
 
+
     // getter pour la propriété largeur
     get largeur()
     {
@@ -34,8 +36,12 @@ export class MeModule
             throw "La largeur doit etre supperieure ou egale à " + MeModule.largeurMin ;
         else if( valeur > MeModule.largeurMax )
             throw "La largeur doit etre inferieur ou egale à " + MeModule.largeurMax ;            
-        else
-            this._largeur = valeur ;
+        else {
+            this._largeur = valeur;
+
+            FormMeModule.updateAllForm(this);
+        }
+            
     }
 
     get hauteur()
@@ -49,8 +55,11 @@ export class MeModule
             throw "La hauteur doit etre supperieure ou egale à " + MeModule.hauteurMin ;
         else if( valeur > MeModule.hauteurMax )
             throw "La hauteur doit etre inférieure ou egale à " + MeModule.hauteurMax ;
-        else
+        else{
+
             this._hauteur = valeur ;
+            FormMeModule.updateAllForm(this);
+        }
     }
 
     get profondeur()
@@ -65,7 +74,10 @@ export class MeModule
         else if( valeur > MeModule.profondeurMax )
             throw "La profondeur doit etre inférieure ou egale à " + MeModule.profondeurMax ;
         else
+        {
             this._profondeur = valeur ;
+            FormMeModule.updateAllForm(this);
+        }
 
     }
 

@@ -1,49 +1,52 @@
 <html>
     <head>
         <title>App Meuble</title>
-        <meta name="viewport" content="viewport-fit=cover, width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <link href="main.css" rel="stylesheet">
     </head>
     <body>
         <div id="main">
             Bonjour
-            <div id="FormMeModule1" class="FormMeModule">
-                <div>
-                    <label>Largeur:</label>
-                    <input type="number" class="InputNumber largeur">
-                </div>
-                <div>
-                    <label>Hauteur:</label>
-                    <input type="number" class="InputNumber hauteur">
-                </div>
-                <div>
-                    <label>Profondeur:</label>
-                    <input type="number" class="InputNumber profondeur">
-                </div>
-                <div>
-                    <button id="btnOk">OK</button>
-                    <button id="btnCancel">Cancel</button>
-                </div>
-            </div>
-            <div id="FormMeModule2" class="FormMeModule">
-                <div>
-                    <label>Largeur:</label>
-                    <input type="number" class="InputNumber largeur">
-                </div>
-                <div>
-                    <label>Hauteur:</label>
-                    <input type="number" class="InputNumber hauteur">
-                </div>
-                <div>
-                    <label>Profondeur:</label>
-                    <input type="number" class="InputNumber profondeur">
-                </div>
-                <div>
-                    <button id="btnOk">OK</button>
-                    <button id="btnCancel">Cancel</button>
-                </div>
-            </div>
         </div>
+
+        <div id="FormMeModele1">
+            <form id="formModule">
+                <label for="largeur">Largeur : </label>
+                <input required id="largeur" type="text" value="" />
+    
+                <br>
+    
+                <label for="hauteur">Hauteur : </label>
+                <input required type="text" name="" id="hauteur">
+    
+                <br>
+    
+                <label for="profondeur">Profondeur : </label>
+                <input required type="text" name="" id="profondeur">
+                <br>
+                <button id="btn_ok_1">OK</button>
+                <button id="btn_cancel_1">CANCEL</button>
+            </form>
+        </div>
+        <br>
+        <div id="FormMeModele2">
+            <form id="formModule">
+                <label for="largeur">Largeur : </label>
+                <input required id="largeur" type="text" value="" />
+    
+                <br>
+    
+                <label for="hauteur">Hauteur : </label>
+                <input required type="text" name="" id="hauteur">
+    
+                <br>
+    
+                <label for="profondeur">Profondeur : </label>
+                <input required type="text" name="" id="profondeur">
+                <br>
+                <button id="btn_ok_2">OK</button>
+                <button id="btn_cancel_2">CANCEL</button>
+            </form>
+        </div>
+
         <script type="module" src="index.js"></script>
     </body>
 </html>

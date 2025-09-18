@@ -1,89 +1,85 @@
+import { MeModule } from "../meuble/MeModule"
 
-import {MeModule} from "../meuble/MeModule"
+export class FormMeModule {
+    static instances = [];
+    static lastId = 0;
 
-export class FormMeModule
-{
-    // idForm: Identifiant de la balise HTML contenant le formulaire
-    constructor( idForm )
-    {
-        this.idForm = idForm ;
-        this.modele = null ;
+    constructor(idForm, meModel = new MeModule()) {
 
-        // Ajout des listeners sur les boutons OK et CANCEL et
-        // gére l'appel des méthodes onOk et onCancel
-        let div = document.getElementById( this.idForm ) ;
-        if( div )
-        {
-            let btnOk = document.getElementById( "btnOk") ;
-            if( btnOk )
-            {
-                btnOk.addEventListener( "click", ()=>
-                {
-                    this.onOk() ;
-                }) ;
+        FormMeModule.instances.push(this);
+
+        this.id = ++FormMeModule.lastId;
+        this.divForm = document.getElementById(idForm);
+        this.meModel = meModel;
+
+        document.getElementById(`${this.divForm.children[0].children[9].id}`).addEventListener("click", (event) => {
+            event.preventDefault();
+            this.onOk();
+        }) ;
+        
+        
+        document.getElementById(`${this.divForm.children[0].children[10].id}`).addEventListener("click", (event) => {
+            event.preventDefault();
+            this.onCancel();
+        }) ;
+
+    }
+
+    updateThisForm(){
+        this.divForm.children[0].children[1].value = this.meModel.largeur;
+        this.divForm.children[0].children[4].value = this.meModel.hauteur;
+        this.divForm.children[0].children[7].value = this.meModel.profondeur;      
+        
+        console.log(`INSTANCE[${this.id}] : Update this form`);
+        
+    }
+
+    updateForm() {
+       FormMeModule.instances.forEach(element => {
+        element.divForm.children[0].children[1].value = this.meModel.largeur;
+        element.divForm.children[0].children[4].value = this.meModel.hauteur;
+        element.divForm.children[0].children[7].value = this.meModel.profondeur;        
+
+        console.log(`INSTANCE[${this.id}] : Update all form`);
+       });
+
+    }
+
+    updateModele(){
+        let largeur = this.divForm.children[0].children[1].value;
+        let hauteur = this.divForm.children[0].children[4].value;
+        let profondeur = this.divForm.children[0].children[7].value;
+
+        this.meModel.largeur = largeur;
+        this.meModel.hauteur = hauteur;
+        this.meModel.profondeur = profondeur;
+
+        console.log(`INSTANCE[${this.id}] : Update modele`);
+        console.log(this.meModel);
+        
+    }
+
+
+    onOk() {
+        this.updateModele();
+    }
+
+
+    onCancel(){
+        this.updateForm();
+    }
+
+
+    static updateAllForm(_meModel){
+        FormMeModule.instances.forEach(form => {
+            
+            if (form.meModel === _meModel) {
+                form.updateThisForm();
             }
+            
+        });
 
-            let btnCancel = document.getElementById( "btnCancel") ;
-            if( btnCancel )
-            {
-                btnCancel.addEventListener( "click", ()=>
-                {
-                    this.onCancel() ;
-                }) ;
-            }
-        }
-
+        console.log("Update all form from MeModule");
     }
 
-    updateForm( me=null )
-    {
-        if( me ) this.modele = me ;
-
-        let div = document.getElementById( this.idForm ) ;
-        if( div )
-        {
-            // Recupère la référence de l'input largeur et met à jour sa valeur
-            let inputLargeur = div.getElementsByClassName( "largeur" )[0] ;
-            if( inputLargeur ) inputLargeur.value = this.modele.largeur ;
-
-            // Recupère la référence de l'input hauteur et met à jour sa valeur
-            let inputHauteur = div.getElementsByClassName ( "hauteur" )[0] ;
-            if( inputHauteur ) inputHauteur.value = this.modele.hauteur ;
-
-            // Recupère la référence de l'input profondeur et met à jour sa valeur
-            let inputProfondeur = div.getElementsByClassName( "profondeur" )[0] ;
-            if( inputProfondeur ) inputProfondeur.value = this.modele.profondeur ;
-        }
-    }
-
-    updateModele( me=null )
-    {
-        if( me ) this.modele = me ;
-
-        let div = document.getElementById( this.idForm ) ;
-        if( div )
-        {
-            // Recupère la référence de l'input largeur et met à jour sa valeur
-            let inputLargeur = div.getElementsByClassName( "largeur" )[0] ;
-            if( inputLargeur ) this.modele.largeur = parseInt(inputLargeur.value) ;
-
-            // Recupère la référence de l'input hauteur et met à jour sa valeur
-            let inputHauteur = div.getElementsByClassName ( "hauteur" )[0] ;
-            if( inputHauteur ) this.modele.hauteur = parseInt(inputHauteur.value) ;
-
-            // Recupère la référence de l'input profondeur et met à jour sa valeur
-            let inputProfondeur = div.getElementsByClassName( "profondeur" )[0] ;
-            if( inputProfondeur ) this.modele.profondeur = parseInt(inputProfondeur.value) ;
-        }
-    }
-
-    onOk()
-    {
-        this.updateModele() ;
-    }
-
-    onCancel()
-    {
-        this.updateForm() ;
-    }
 }
