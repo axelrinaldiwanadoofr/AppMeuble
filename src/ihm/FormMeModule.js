@@ -1,13 +1,14 @@
 
 import {MeModule} from "../meuble/MeModule"
+import {View} from "../mvc/View"
 
-export class FormMeModule
+export class FormMeModule extends View
 {
     // idForm: Identifiant de la balise HTML contenant le formulaire
     constructor( idForm )
     {
+        super() ;
         this.idForm = idForm ;
-        this.modele = null ;
 
         // Ajout des listeners sur les boutons OK et CANCEL et
         // gére l'appel des méthodes onOk et onCancel
@@ -35,9 +36,9 @@ export class FormMeModule
 
     }
 
-    updateForm( me=null )
+    updateView( modele )
     {
-        if( me ) this.modele = me ;
+        super.updateView( modele ) ; // Appel de updateView de la classe mère View
 
         let div = document.getElementById( this.idForm ) ;
         if( div )

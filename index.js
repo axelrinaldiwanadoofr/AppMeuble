@@ -1,5 +1,6 @@
 import { MeModule } from "./src/meuble/MeModule";
 import { FormMeModule } from "./src/ihm/FormMeModule";
+import { Controler } from "./src/mvc/Controler";
 
 let m1 = new MeModule( 100, 5, 200 ) ;
 
@@ -25,17 +26,27 @@ catch( messageErreur )
 
 console.log( m2 ) ;
 
+let ctrl1 = new Controler() ;
+
+ctrl1.addView( new FormMeModule( "FormMeModule1" ) ) ;
+ctrl1.addView( new FormMeModule( "FormMeModule2" ) ) ;
+
+ctrl1.updateAllViews( m2 ) ;
+
+/*
 let form1 = new FormMeModule( "FormMeModule1" ) ;
 form1.updateForm( m2 ) ;
 
 let form2 = new FormMeModule( "FormMeModule2" ) ;
 form2.updateForm( m2 ) ;
+*/
 
 m2.couleur = "#FF0000" ;
 m2.largeur = 40 ;
 
 console.log( m2 ) ;
 
+Controler.startUpdating() ;
 
 
 

@@ -1,9 +1,11 @@
+import { Modele } from "../mvc/Modele";
 
-
-export class MeModule
+export class MeModule extends Modele
 {
     constructor( largeur=30, hauteur=10, profondeur=30, couleur="#C0C0C0" )
     {
+        super() ; //Appel du constructeur de Modele
+
         // On cree et initialise les attributs
         this._largeur = MeModule.largeurMin ;
         this._hauteur = MeModule.hauteurMin ;
@@ -21,6 +23,11 @@ export class MeModule
         {
             console.error( erreur ) ;
         }
+    }
+
+    getHash()
+    {
+        return "" + this._largeur + this._hauteur + this._profondeur + this.couleur ;
     }
 
     // getter pour la propriété largeur
