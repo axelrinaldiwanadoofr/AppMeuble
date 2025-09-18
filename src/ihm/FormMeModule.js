@@ -7,12 +7,29 @@ export class FormMeModuleWC extends HTMLElement
     constructor()
     {
         super() ;
-   
+        this.createElements() ;
+    }
+
+    async createElements()
+    {
         let root = this.attachShadow({mode: 'open'}) ;
-        let content = document.createElement( "h1" ) ;
+        let html = await this.loadHtml( "src/ihm/FormMeModuleHtml.html" ) ;
+
+        let content = document.createElement( "div" ) ;
         let name = this.getAttribute( "name" ) ;
-        content.innerHTML = "Coucou " + name ;
+        content.innerHTML = html ;
         root.appendChild( content ) ;
+
+    }
+
+    async loadHtml( url )
+    {
+        let reponse = await window.fetch( url, {method: "GET"}) ;
+        if( !reponse.ok )
+        {
+            throw( "HTTP erreur: Ne pas charger: " + url + " status: " + reponse.status ) ;
+        }
+        return reponse.text() ;
     }
 
 }
