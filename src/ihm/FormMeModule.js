@@ -2,6 +2,24 @@
 import {MeModule} from "../meuble/MeModule"
 import {View} from "../mvc/View"
 
+export class FormMeModuleWC extends HTMLElement
+{
+    constructor()
+    {
+        super() ;
+   
+        let root = this.attachShadow({mode: 'open'}) ;
+        let content = document.createElement( "h1" ) ;
+        let name = this.getAttribute( "name" ) ;
+        content.innerHTML = "Coucou " + name ;
+        root.appendChild( content ) ;
+    }
+
+}
+
+//document.registerElement( "form-memodule", FormMeModuleWC ) ;
+window.customElements.define( "form-memodule", FormMeModuleWC ) ;
+
 export class FormMeModule extends View
 {
     // idForm: Identifiant de la balise HTML contenant le formulaire
