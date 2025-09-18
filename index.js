@@ -26,7 +26,7 @@ catch( messageErreur )
 
 console.log( m2 ) ;
 
-let ctrl1 = new Controler() ;
+let ctrl1 = new Controler( "mmm") ;
 
 ctrl1.addView( new FormMeModule( "FormMeModule1" ) ) ;
 ctrl1.addView( new FormMeModule( "FormMeModule2" ) ) ;

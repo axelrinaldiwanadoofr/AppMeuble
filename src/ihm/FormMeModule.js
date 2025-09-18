@@ -1,56 +1,26 @@
 
 import {MeModule} from "../meuble/MeModule"
 import {View} from "../mvc/View"
-
-export class FormMeModuleWC extends HTMLElement
-{
-    constructor()
-    {
-        super() ;
-        this.createElements() ;
-    }
-
-    async createElements()
-    {
-        let root = this.attachShadow({mode: 'open'}) ;
-        let html = await this.loadHtml( "src/ihm/FormMeModuleHtml.html" ) ;
-
-        let content = document.createElement( "div" ) ;
-        let name = this.getAttribute( "name" ) ;
-        content.innerHTML = html ;
-        root.appendChild( content ) ;
-
-    }
-
-    async loadHtml( url )
-    {
-        let reponse = await window.fetch( url, {method: "GET"}) ;
-        if( !reponse.ok )
-        {
-            throw( "HTTP erreur: Ne pas charger: " + url + " status: " + reponse.status ) ;
-        }
-        return reponse.text() ;
-    }
-
-}
-
-//document.registerElement( "form-memodule", FormMeModuleWC ) ;
-window.customElements.define( "form-memodule", FormMeModuleWC ) ;
+import { Controler } from "../mvc/Controler";
 
 export class FormMeModule extends View
 {
     // idForm: Identifiant de la balise HTML contenant le formulaire
-    constructor( idForm )
+    constructor( idOrElement )
     {
         super() ;
-        this.idForm = idForm ;
+
+        if( typeof(idOrElement) == "object" )
+            this.rootElement = idOrElement ;
+        else
+            this.rootElement = document.getElementById( idOrElement ) ;
+
 
         // Ajout des listeners sur les boutons OK et CANCEL et
         // gére l'appel des méthodes onOk et onCancel
-        let div = document.getElementById( this.idForm ) ;
-        if( div )
+        if( this.rootElement )
         {
-            let btnOk = div.getElementsByClassName( "btnOk") ;
+            let btnOk = this.rootElement.getElementsByClassName( "btnOk") ;
             if( btnOk.length > 0 )
             {
                 btnOk[0].addEventListener( "click", ()=>
@@ -59,7 +29,7 @@ export class FormMeModule extends View
                 }) ;
             }
 
-            let btnCancel = div.getElementsByClassName( "btnCancel") ;
+            let btnCancel = this.rootElement.getElementsByClassName( "btnCancel") ;
             if( btnCancel.length > 0 )
             {
                 btnCancel[0].addEventListener( "click", ()=>
@@ -75,23 +45,22 @@ export class FormMeModule extends View
     {
         super.updateView( modele ) ; // Appel de updateView de la classe mère View
 
-        let div = document.getElementById( this.idForm ) ;
-        if( div )
+        if( this.rootElement )
         {
             // Recupère la référence de l'input largeur et met à jour sa valeur
-            let inputLargeur = div.getElementsByClassName( "largeur" )[0] ;
+            let inputLargeur = this.rootElement.getElementsByClassName( "largeur" )[0] ;
             if( inputLargeur ) inputLargeur.value = this.modele.largeur ;
 
             // Recupère la référence de l'input hauteur et met à jour sa valeur
-            let inputHauteur = div.getElementsByClassName ( "hauteur" )[0] ;
+            let inputHauteur = this.rootElement.getElementsByClassName ( "hauteur" )[0] ;
             if( inputHauteur ) inputHauteur.value = this.modele.hauteur ;
 
             // Recupère la référence de l'input profondeur et met à jour sa valeur
-            let inputProfondeur = div.getElementsByClassName( "profondeur" )[0] ;
+            let inputProfondeur = this.rootElement.getElementsByClassName( "profondeur" )[0] ;
             if( inputProfondeur ) inputProfondeur.value = this.modele.profondeur ;
 
             // Recupère la référence de l'input couleur et met à jour sa valeur
-            let inputCouleur = div.getElementsByClassName( "couleur" )[0] ;
+            let inputCouleur = this.rootElement.getElementsByClassName( "couleur" )[0] ;
             if( inputCouleur ) inputCouleur.value = this.modele.couleur ;
         }
     }
@@ -100,23 +69,22 @@ export class FormMeModule extends View
     {
         if( me ) this.modele = me ;
 
-        let div = document.getElementById( this.idForm ) ;
-        if( div )
+        if( this.rootElement )
         {
             // Recupère la référence de l'input largeur et met à jour sa valeur
-            let inputLargeur = div.getElementsByClassName( "largeur" )[0] ;
+            let inputLargeur = this.rootElement.getElementsByClassName( "largeur" )[0] ;
             if( inputLargeur ) this.modele.largeur = parseInt(inputLargeur.value) ;
 
             // Recupère la référence de l'input hauteur et met à jour sa valeur
-            let inputHauteur = div.getElementsByClassName ( "hauteur" )[0] ;
+            let inputHauteur = this.rootElement.getElementsByClassName ( "hauteur" )[0] ;
             if( inputHauteur ) this.modele.hauteur = parseInt(inputHauteur.value) ;
 
             // Recupère la référence de l'input profondeur et met à jour sa valeur
-            let inputProfondeur = div.getElementsByClassName( "profondeur" )[0] ;
+            let inputProfondeur = this.rootElement.getElementsByClassName( "profondeur" )[0] ;
             if( inputProfondeur ) this.modele.profondeur = parseInt(inputProfondeur.value) ;
 
             // Recupère la référence de l'input couleur et met à jour sa valeur
-            let inputCouleur = div.getElementsByClassName( "couleur" )[0] ;
+            let inputCouleur = this.rootElement.getElementsByClassName( "couleur" )[0] ;
             if( inputCouleur ) this.modele.couleur = inputCouleur.value ;
         }
     }
@@ -132,3 +100,45 @@ export class FormMeModule extends View
         this.updateForm() ;
     }
 }
+
+export class FormMeModuleWC extends HTMLElement
+{
+    constructor()
+    {
+        super() ;
+        this.createElements() ;
+    }
+
+    async createElements()
+    {
+        let root = this.attachShadow({mode: 'open'}) ;
+        let html = await this.loadHtml( "src/ihm/FormMeModuleHtml.html" ) ;
+
+        let content = document.createElement( "div" ) ;
+        content.innerHTML = html ;
+        root.appendChild( content ) ;
+
+        let controlerId = this.getAttribute( "controler" ) ;
+        if( controlerId != undefined )
+        {
+            let controler = Controler.getControler( controlerId ) ;
+            if( controler )
+            {
+                controler.addView( new FormMeModule( content )) ;
+            }
+        }
+    }
+
+    async loadHtml( url )
+    {
+        let reponse = await window.fetch( url, {method: "GET"}) ;
+        if( !reponse.ok )
+        {
+            throw( "HTTP erreur: Ne pas charger: " + url + " status: " + reponse.status ) ;
+        }
+        return reponse.text() ;
+    }
+
+}
+
+window.customElements.define( "form-memodule", FormMeModuleWC ) ;
