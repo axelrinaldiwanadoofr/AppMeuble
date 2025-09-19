@@ -16,4 +16,10 @@ export class View
     {
 
     }
+
+    // Affiche un message d'erreur
+    onError( message )
+    {
+
+    }
 }
