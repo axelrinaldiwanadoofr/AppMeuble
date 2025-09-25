@@ -9,3 +9,10 @@
 {
     text-align: right;
 }
+
+.DrawModule
+{
+    background-color: aqua;
+    width: 100px;
+    height: 50px;
+}

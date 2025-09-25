@@ -3,16 +3,38 @@ import {View} from "../mvc/View"
 
 export class FormView extends View
 {
-    constructor( idForm )
+    constructor( idForm, template=null )
     {
         super() ;
         this.idForm = idForm ;
-
-        // Ajout des listeners sur les boutons OK et CANCEL et
-        // gére l'appel des méthodes onOk et onCancel
+        this.template = template ;
         this.rootElement = document.getElementById( this.idForm ) ;
+
+        this.render() ;
+    }
+
+    async loadHtml()
+    {
+        let reponse = await window.fetch( this.template, {method: "GET"}) ;
+        let html = await reponse.text() ;
+        return html ;
+    }
+
+    async render()
+    {
         if( this.rootElement )
         {
+            // On a un template et l'élément racine ne contient rien
+            if( this.template && !this.rootElement.children.length )
+            {
+                // On charge le code HTML du formulaire
+                let html = await this.loadHtml( this.template ) ;
+                // On injecte le code HTML chargé dans la balise racine
+                this.rootElement.innerHTML = html ;
+            }
+
+            // Ajout des listeners sur les boutons OK et CANCEL et
+            // gére l'appel des méthodes onOk et onCancel
             let btnOk = this.rootElement.getElementsByClassName( "btnOk") ;
             if( btnOk.length > 0 )
             {

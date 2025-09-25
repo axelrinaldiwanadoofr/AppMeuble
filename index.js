@@ -1,6 +1,7 @@
 import { MeModule } from "./src/meuble/MeModule";
 import { FormMeModule } from "./src/ihm/FormMeModule";
 import { Controler } from "./src/mvc/Controler";
+import { DrawMeModule } from "./src/ihm/DrawMeModule";
 
 let m1 = new MeModule( 100, 5, 200 ) ;
 
@@ -30,6 +31,7 @@ let ctrl1 = new Controler() ;
 
 ctrl1.addView( new FormMeModule( "FormMeModule1" ) ) ;
 ctrl1.addView( new FormMeModule( "FormMeModule2" ) ) ;
+ctrl1.addView( new DrawMeModule( "DrawMeModule1")) ;
 
 ctrl1.updateAllViews( m2 ) ;
 

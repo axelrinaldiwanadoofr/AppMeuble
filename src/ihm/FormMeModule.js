@@ -7,7 +7,7 @@ export class FormMeModule extends FormView
     // idForm: Identifiant de la balise HTML contenant le formulaire
     constructor( idForm )
     {
-        super( idForm ) ;
+        super( idForm, "src/ihm/FormMeModule_.html" ) ;
     }
 
     updateView( modele )
