@@ -13,8 +13,21 @@ export class FormTiroir extends FormMeModule
         let result = super.updateView( modele ) ;
 
         this.updateInputElement( "poignee") ;
-        this.updateInputElement( "poigneecouleur") ;
+        this.updateInputElement( "couleurpoignee") ;
 
         return result ;
+    }
+
+    updateModele()
+    {
+        super.updateModele() ;
+
+        this.updateModeleFromInputElement( "poignee") ;
+        this.updateModeleFromInputElement( "couleurpoignee") ;
+    }
+
+    onError( message )
+    {
+        alert( "FormTiroir erreur: " + message ) ;
     }
 }
