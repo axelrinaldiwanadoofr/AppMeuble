@@ -10,6 +10,7 @@ export class View
     {
         if( modele != undefined )
             this.modele = modele ;
+        return true ;
     }
 
     updateModele()

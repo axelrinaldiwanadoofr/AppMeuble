@@ -28,11 +28,12 @@ export class Controler
         
         if( hash != this.modeleHash )
         {
+            let result = true ;
             this.views.forEach( (view)=>
             {
-                view.updateView( this.modele ) ;
+                if( !view.updateView( this.modele ) ) result = false ;
             }) ;
-            this.modeleHash = hash ;
+            if( result ) this.modeleHash = hash ;
         }
     }
 

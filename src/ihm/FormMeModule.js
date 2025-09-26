@@ -12,7 +12,7 @@ export class FormMeModule extends FormView
 
     updateView( modele )
     {
-        super.updateView( modele ) ; // Appel de updateView de la classe mère View
+        let result = super.updateView( modele ) ; // Appel de updateView de la classe mère View
 
         this.updateInputElement( "largeur" )
         this.updateInputElement( "hauteur" ) ;
@@ -23,6 +23,7 @@ export class FormMeModule extends FormView
         {
             return this.modele.largeur * this.modele.hauteur * this.modele.profondeur;
         }) ;
+        return result ;
     }
 
     updateModele()

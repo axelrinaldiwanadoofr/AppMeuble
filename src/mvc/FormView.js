@@ -118,6 +118,13 @@ export class FormView extends View
         }
     }
 
+    updateView( modele )
+    {
+        super.updateView( modele ) ;
+        if( !this.rootElement || !this.rootElement.children.length ) return false ;
+        return true ;
+    }
+
     onOk()
     {
         this.updateModele() ;

@@ -10,9 +10,11 @@ export class FormTiroir extends FormMeModule
 
     updateView( modele )
     {
-        super.updateView( modele ) ;
+        let result = super.updateView( modele ) ;
 
         this.updateInputElement( "poignee") ;
         this.updateInputElement( "poigneecouleur") ;
+
+        return result ;
     }
 }
