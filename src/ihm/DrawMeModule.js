@@ -13,7 +13,7 @@ export class DrawMeModule extends View
     {
         super.updateView( modele ) ;
 
-        let draw = document.getElementById( "DrawMeModule1" ) ;
+        let draw = document.getElementById(  this.idDraw ) ;
         if( draw && this.modele )
         {
             draw.style.width = this.modele.largeur + "px" ;

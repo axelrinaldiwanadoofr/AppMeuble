@@ -5,9 +5,9 @@ import {FormView} from "../mvc/FormView"
 export class FormMeModule extends FormView
 {
     // idForm: Identifiant de la balise HTML contenant le formulaire
-    constructor( idForm )
+    constructor( idForm, template="src/ihm/FormMeModule_.html" )
     {
-        super( idForm, "src/ihm/FormMeModule_.html" ) ;
+        super( idForm, template ) ;
     }
 
     updateView( modele )

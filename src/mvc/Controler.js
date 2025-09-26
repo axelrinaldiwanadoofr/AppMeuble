@@ -30,7 +30,7 @@ export class Controler
         {
             this.views.forEach( (view)=>
             {
-                view.updateView( modele ) ;
+                view.updateView( this.modele ) ;
             }) ;
             this.modeleHash = hash ;
         }
