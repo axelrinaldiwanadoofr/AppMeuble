@@ -2,11 +2,12 @@ import { Modele } from "../mvc/Modele";
 
 export class MeModule extends Modele
 {
-    constructor( largeur=30, hauteur=10, profondeur=30, couleur="#C0C0C0" )
+    constructor( id, largeur=30, hauteur=10, profondeur=30, couleur="#C0C0C0" )
     {
         super() ; //Appel du constructeur de Modele
 
         // On cree et initialise les attributs
+        this._id = "MM" + MeModule.moduleCpt++ ;
         this._largeur = MeModule.largeurMin ;
         this._hauteur = MeModule.hauteurMin ;
         this._profondeur = MeModule.profondeurMin ;
@@ -15,6 +16,7 @@ export class MeModule extends Modele
         // On met à jour des attributs
         try
         {
+            if( id != undefined && id != null ) this.id = id ;
             this.largeur = largeur ;
             this.hauteur = hauteur ;
             this.profondeur = profondeur ;
@@ -28,6 +30,19 @@ export class MeModule extends Modele
     getHash()
     {
         return "" + this._largeur + this._hauteur + this._profondeur + this.couleur ;
+    }
+
+    // getter pour la propriété id
+    get id()
+    {
+        return this._id ; // retourne la valeur de l'attribut _id
+    }
+
+    set id( valeur )
+    {
+        // Dans une version ultérieure l'unicité de la valeur de l'identifiant 
+        // devra être vérifiée.
+        this._id = valeur ;
     }
 
     // getter pour la propriété largeur
@@ -85,5 +100,6 @@ export class MeModule extends Modele
     static profondeurMin = 30 ;
     static profondeurMax = 120 ;
 
+    static moduleCpt = 0 ;
 
 }

@@ -3,9 +3,9 @@ import {MeModule} from "./MeModule"
 
 export class Tiroir extends MeModule
 {
-    constructor( largeur=80, hauteur=20, profondeur=50, couleur="#000000", poignee="ronde", couleurpoignee="#00FF00" )
+    constructor( id, largeur=80, hauteur=20, profondeur=50, couleur="#000000", poignee="ronde", couleurpoignee="#00FF00" )
     {
-        super( largeur, hauteur, profondeur, couleur ) ;
+        super( id, largeur, hauteur, profondeur, couleur ) ;
 
         this._poignee = "ronde" ;
         this.couleurpoignee = couleurpoignee ;
