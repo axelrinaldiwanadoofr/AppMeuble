@@ -19,6 +19,11 @@ export class Controler
         this.views.push( view ) ; 
     }
 
+    removeAllViews()
+    {
+        this.views = [] ;
+    }
+
     updateAllViews( modele )
     {
         if( modele != undefined )
