@@ -2,11 +2,14 @@
 
 export class Controler
 {
-    constructor()
+    constructor( id )
     {
+        this.id = "C" + Controler.controlerCpt++ ;
         this.modele = null ;
         this.modeleHash = "" ;
         this.views = [] ; // Crée un tableau vide
+
+        if( id != undefined ) this.id = id ;
 
         // On stoke la référence du nouveau controleur dans le tableau
         // static controlers
@@ -54,4 +57,5 @@ export class Controler
     }
 
     static controlers = [] ; // Stocke la référence de tous les controleurs
+    static controlerCpt = 0 ;
 }
