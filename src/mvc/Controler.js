@@ -45,6 +45,16 @@ export class Controler
         }
     }
 
+    static getControler( id )
+    {
+        for( let i=0 ; i<Controler.controlers.length ; i++ )
+        {
+            if( Controler.controlers[i].id == id ) 
+                return Controler.controlers[i] ;
+        }
+        return null ;
+    }
+
     static startUpdating()
     {
         setInterval( ()=>
