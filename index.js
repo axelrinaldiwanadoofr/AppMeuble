@@ -55,9 +55,18 @@ ctrl2.updateAllViews( t1 ) ;
 
 Controler.startUpdating() ;
 
-let ctrl3 = new Controler( "toto") ;
+/*
+On crée une instance de Router qui prend en charge tous les 
+bouton appartenant à la classe de style MenuItem présent dans 
+tous le document
+On crée une instance de chacune des pages qui seront gérée par le
+routeur avec sa méthode addPage. Le premier argument de la méthode
+addPage précise le nom de la page conrrespondant à la valeur de 
+la propriété name du ou des boutons permettant d'accéder à la page.
+*/
 
-Controler.removeControler( "toto" ) ;
-
+let router = new Router( "MenuItem", "main" ) ;
+router.addPage( "PageMeModule", new PageMeModule() ) ;
+router.addPage( "PageTiroir", new PageTiroir() ) ;
 
 
