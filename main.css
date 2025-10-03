@@ -12,7 +12,30 @@
 
 .DrawModule
 {
-    background-color: aqua;
-    width: 100px;
-    height: 50px;
+    text-align: center;
+    font-size: small;
+}
+
+.DrawTiroir
+{
+    align-content: center ;
+    text-align: center;
+    font-size: small;
+}
+
+.DrawPoignee
+{
+    position:relative ;
+}
+.DrawPoigneeRonde
+{
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+.DrawPoigneeRecangulaire
+{
+    width: 20px;
+    height: 10px;
 }
