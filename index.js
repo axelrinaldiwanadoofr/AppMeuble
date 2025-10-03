@@ -6,11 +6,11 @@ import { Tiroir } from "./src/meuble/Tiroir" ;
 import { FormTiroir } from "./src/ihm/FormTiroir";
 import { DrawTiroir } from "./src/ihm/DrawTiroir";
 
-let m1 = new MeModule( 100, 5, 200 ) ;
+let m1 = new MeModule( null, 100, 5, 200 ) ;
 
 console.log( m1 ) ;
 
-let m2 = new MeModule( 400 ) ;
+let m2 = new MeModule( null, 400 ) ;
 
 console.log( m2 ) ;
 
@@ -45,7 +45,7 @@ console.log( m2 ) ;
 
 // Tiroir
 
-let t1 = new Tiroir( 100, 30, 50, "#00FFFF", "ronde" ) ;
+let t1 = new Tiroir( null ,100, 30, 50, "#00FFFF", "ronde" ) ;
 
 let ctrl2 = new Controler() ;
 ctrl2.addView( new FormTiroir( "FormTiroir1") ) ;
