@@ -49,10 +49,19 @@ export class Controler
     {
         for( let i=0 ; i<Controler.controlers.length ; i++ )
         {
-            if( Controler.controlers[i].id == id ) 
+            if( Controler.controlers[i] && Controler.controlers[i].id == id ) 
                 return Controler.controlers[i] ;
         }
         return null ;
+    }
+
+    static removeControler( id )
+    {      
+        for( let i=0 ; i<Controler.controlers.length ; i++ )
+        {
+            if( Controler.controlers[i] && Controler.controlers[i].id == id ) 
+                Controler.controlers[i] = null ;
+        }
     }
 
     static startUpdating()
@@ -61,7 +70,8 @@ export class Controler
         {
             Controler.controlers.forEach( (controler)=>
             {
-                controler.updateAllViews() ;
+                if( controler )
+                    controler.updateAllViews() ;
             }) ;
         }, 200 ) ;
     }

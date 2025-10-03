@@ -55,5 +55,9 @@ ctrl2.updateAllViews( t1 ) ;
 
 Controler.startUpdating() ;
 
+let ctrl3 = new Controler( "toto") ;
+
+Controler.removeControler( "toto" ) ;
+
 
 
