@@ -29,9 +29,14 @@ export class Page
         }
     }
 
-    show( mainElement )
+    async show( mainElement )
     {
         return true ;
+    }
+
+    async remove()
+    {
+
     }
 
 
