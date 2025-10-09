@@ -5,7 +5,10 @@ export class Router
 {
     constructor( idMenu, mainlementId )
     {
+        this.pages = {} ; // Dictionnaire des pages
+        this.currentPage = null ; // Référence de la page courante
 
+        this.createClickListener( idMenu ) ;
     }
 
     createClickListener( idMenu )
