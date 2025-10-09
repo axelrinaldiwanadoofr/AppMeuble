@@ -25,23 +25,27 @@ export class Controler
     removeAllViews()
     {
         this.views = [] ;
+        this.modeleHash = "" ;
     }
 
-    updateAllViews( modele )
+    async updateAllViews( modele )
     {
         if( modele != undefined )
             this.modele = modele ;
 
-        let hash = this.modele.getHash() ;
-        
-        if( hash != this.modeleHash )
+        if( this.modele )
         {
-            let result = true ;
-            this.views.forEach( (view)=>
+            let hash = this.modele.getHash() ;
+            
+            if( hash != this.modeleHash )
             {
-                if( !view.updateView( this.modele ) ) result = false ;
-            }) ;
-            if( result ) this.modeleHash = hash ;
+                let result = true ;
+                for( let i=0; i<this.views.length ; i++ )
+                {
+                    if( ! await this.views[i].updateView( this.modele ) ) result = false ;
+                } 
+                if( result ) this.modeleHash = hash ;
+            }
         }
     }
 

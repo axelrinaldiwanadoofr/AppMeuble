@@ -9,8 +9,6 @@ export class FormView extends View
         this.idForm = idForm ;
         this.template = template ;
         this.rootElement = document.getElementById( this.idForm ) ;
-
-        this.render() ;
     }
 
     async loadHtml()
@@ -118,10 +116,14 @@ export class FormView extends View
         }
     }
 
-    updateView( modele )
+    async updateView( modele )
     {
         super.updateView( modele ) ;
-        if( !this.rootElement || !this.rootElement.children.length ) return false ;
+        if( !this.rootElement || !this.rootElement.children.length )
+        { 
+            await this.render() ;
+            return false ;
+        }
         return true ;
     }
 

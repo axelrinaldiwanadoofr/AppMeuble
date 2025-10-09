@@ -8,9 +8,9 @@ export class FormTiroir extends FormMeModule
         super( idForm, template ) ;
     }
 
-    updateView( modele )
+    async updateView( modele )
     {
-        let result = super.updateView( modele ) ;
+        let result = await super.updateView( modele ) ;
 
         this.updateInputElement( "poignee") ;
         this.updateInputElement( "couleurpoignee") ;

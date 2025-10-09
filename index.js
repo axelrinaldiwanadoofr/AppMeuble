@@ -5,6 +5,9 @@ import { DrawMeModule } from "./src/ihm/DrawMeModule";
 import { Tiroir } from "./src/meuble/Tiroir" ;
 import { FormTiroir } from "./src/ihm/FormTiroir";
 import { DrawTiroir } from "./src/ihm/DrawTiroir";
+import { PageTiroir } from "./src/pages/PageTiroir";
+import { PageMeModule } from "./src/pages/PageMeModule" ;
+import { Router } from "./src/pages/Router";
 
 let m1 = new MeModule( null, 100, 5, 200 ) ;
 

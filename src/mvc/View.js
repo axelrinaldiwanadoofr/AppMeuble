@@ -6,7 +6,7 @@ export class View
         this.modele = null ;
     }
 
-    updateView( modele )
+    async updateView( modele )
     {
         if( modele != undefined )
             this.modele = modele ;

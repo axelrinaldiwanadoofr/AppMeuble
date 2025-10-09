@@ -9,9 +9,9 @@ export class DrawMeModule extends View
         this.idDraw = idDraw ;
     }
 
-    updateView( modele )
+    async updateView( modele )
     {
-        super.updateView( modele ) ;
+        await super.updateView( modele ) ;
 
         let draw = document.getElementById(  this.idDraw ) ;
         if( draw && this.modele )

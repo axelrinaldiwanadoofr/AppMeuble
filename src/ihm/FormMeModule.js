@@ -10,9 +10,9 @@ export class FormMeModule extends FormView
         super( idForm, template ) ;
     }
 
-    updateView( modele )
+    async updateView( modele )
     {
-        let result = super.updateView( modele ) ; // Appel de updateView de la classe mère View
+        let result = await super.updateView( modele ) ; // Appel de updateView de la classe mère View
 
         this.updateInputElement( "id" ) ;
         this.updateInputElement( "largeur" ) ;

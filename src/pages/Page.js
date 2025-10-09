@@ -2,7 +2,7 @@
 
 export class Page
 {
-    contructor( template )
+    constructor( template )
     {
         this.template = template ;
     }
@@ -19,7 +19,7 @@ export class Page
         if( mainElement )
         {
             // On a un template et l'élément racine ne contient rien
-            if( this.template && !mainElement.children.length )
+            if( this.template )
             {
                 // On charge le code HTML du formulaire
                 let html = await this.loadHtml( this.template ) ;
