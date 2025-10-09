@@ -3,10 +3,11 @@ import {Page} from "./Page" ;
 
 export class Router
 {
-    constructor( idMenu, mainlementId )
+    constructor( idMenu, mainElementId )
     {
         this.pages = {} ; // Dictionnaire des pages
         this.currentPage = null ; // Référence de la page courante
+        this.mainElement = document.getElementById( mainElementId ) ;
 
         this.createClickListener( idMenu ) ;
     }
@@ -26,5 +27,17 @@ export class Router
         }
     }
 
+    async showPage( pageName )
+    {
+        if( this.pages.hasOwnProperty( pageName ) ) 
+        {
+            if( this.currentPage )
+                await this.currentPage.remove() ;
+
+            await this.pages[pageName].show( this.mainElement ) ;
+
+            this.currentPage = this.pages[pageName] ;
+        }
+    }
 
 }
