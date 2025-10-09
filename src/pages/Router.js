@@ -40,4 +40,9 @@ export class Router
         }
     }
 
+    addPage( pageName, page )
+    {
+        this.pages[pageName] = page ;
+    }
+
 }
