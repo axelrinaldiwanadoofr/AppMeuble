@@ -29,5 +29,10 @@ export class Page
         }
     }
 
+    show( mainElement )
+    {
+        return true ;
+    }
+
 
 }
