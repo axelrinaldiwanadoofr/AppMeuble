@@ -39,12 +39,12 @@ export class Controler
             
             if( hash != this.modeleHash )
             {
-                let result = true ;
+                let result = 0 ;
                 for( let i=0; i<this.views.length ; i++ )
                 {
-                    if( ! await this.views[i].updateView( this.modele ) ) result = false ;
+                    if( await this.views[i].updateView( this.modele ) ) result++ ;
                 } 
-                if( result ) this.modeleHash = hash ;
+                if( result && result == this.views.length ) this.modeleHash = hash ;
             }
         }
     }

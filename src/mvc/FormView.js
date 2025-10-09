@@ -122,7 +122,7 @@ export class FormView extends View
         if( !this.rootElement || !this.rootElement.children.length )
         { 
             await this.render() ;
-            return false ;
+            return true ;
         }
         return true ;
     }
